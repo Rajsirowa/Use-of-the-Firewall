@@ -1,0 +1,11 @@
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere                  
+23/tcp                     DENY        Anywhere                  
+88/tcp                     DENY        Anywhere                  
+22 (v6)                    ALLOW       Anywhere (v6)             
+23/tcp (v6)                DENY        Anywhere (v6)             
+88/tcp (v6)                DENY        Anywhere (v6)             
+
