@@ -1,0 +1,79 @@
+🖥️ 1. Open Firewall Configuration Tool (Windows Firewall)
+
+    Press Windows + R, type: wf.msc, hit Enter
+    (This opens Windows Defender Firewall with Advanced Security)
+
+📋 2. List Current Firewall Rules
+
+    In the left pane, click Inbound Rules
+
+    Scroll to view existing rules (you can sort by Port or Name for easier navigation)
+
+🚫 3. Add a Rule to Block Inbound Traffic on Port 23 (Telnet)
+
+    In Inbound Rules, click New Rule (right-side pane)
+
+    Select Port → Click Next
+
+    Choose TCP, type 23 → Click Next
+
+    Select Block the connection → Click Next
+
+    Apply to all profiles (Domain, Private, Public) → Click Next
+
+    Name the rule: e.g., "Block Telnet Port 23" → Click Finish
+
+🧪 4. Test the Rule (Telnet)
+
+    Install Telnet Client (if not installed):
+
+        Open Command Prompt as Administrator → type:
+
+    dism /online /Enable-Feature /FeatureName:TelnetClient
+
+Test the blocked connection:
+
+    telnet localhost 23
+
+        You should get "Connecting To localhost...Could not open connection to the host"
+
+🔐 5. (Optional for Linux): Allow SSH on Port 22
+
+    Not required for Windows. Skip if working only on Windows.
+
+🗑️ 6. Remove the Block Rule
+
+    Go to Inbound Rules
+
+    Find "Block Telnet Port 23"
+
+    Right-click → Delete
+
+📝 7. Document GUI Steps Used
+
+**Windows Firewall Configuration (GUI Steps)**
+
+1. Opened firewall tool via `wf.msc`
+2. Listed rules under "Inbound Rules"
+3. Created new rule:
+   - Type: Port
+   - Protocol: TCP
+   - Port: 23
+   - Action: Block
+4. Tested using: `telnet localhost 23`
+5. Removed rule after testing
+
+🧠 8. Summary: How Firewalls Filter Traffic
+
+A firewall filters traffic by examining incoming and outgoing packets based on rules. These rules consider:
+
+    IP addresses
+
+    Ports
+
+    Protocols
+
+Inbound rules protect the system from external threats.
+Outbound rules restrict or monitor data leaving your machine.
+
+In this task, blocking port 23 (Telnet) demonstrates how firewalls help prevent unsecure access, while allowing port 22 (SSH) ensures secure remote communication on Linux.
